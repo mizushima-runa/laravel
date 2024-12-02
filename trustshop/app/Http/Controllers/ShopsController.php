@@ -29,15 +29,18 @@ class ShopsController extends Controller
         ])
         ->from('shops')
         ->join('bunruis',function($join){
-            $join->on('shops.bunrui','=','bunruis.id');
+            $join->on('shops.shop_bunrui','=','bunruis.id');
         })
         ->orderby('shops.id','DESC')
         ->paginate(5);
 
-
-        return view('index',compact('shops'))->with('i',(request()->input('page',1)-1)*5);
-        // index.blade.phpをviewとして返す。
+        return view('index',compact('shops'));
+        // ->with('i',(request()->input('page',1)-1)*5);
+        
     }
+// 
+        // index.blade.phpをviewとして返す。
+
 
     /**
      * Show the form for creating a new resource.
@@ -67,7 +70,7 @@ class ShopsController extends Controller
             'number' => 'required|digits:5',
             'name' => 'required|string|max:30',
             'shosai' => 'required|string|max:50',
-            'bunrui' => 'required|integer|between:1,5',
+            'shop_bunrui' => 'required|integer|between:1,5',
         ]); 
         $shop = new Shops; 
         // 新しいshopsモデルのインスタンス、DBに新しいレコードを挿入するための準備
@@ -77,7 +80,7 @@ class ShopsController extends Controller
         $shop->user_id = $request->input("number");
         $shop->name = $request->input("name");
         $shop->description = $request->input("shosai");
-        $shop->bunrui = $request->input("bunrui");
+        $shop->shop_bunrui = $request->input("shop_bunrui");
         $shop->save();
 
         return redirect()->route('shops.index');
@@ -129,4 +132,25 @@ class ShopsController extends Controller
     {
         //
     }
+
+    // shop個々のページを作成
+    public function sales($id)
+{
+    $shop = Shops::with('bunrui')->find($id);
+    // dd($shop->bunrui); // bunrui データを確認
+    return view('shops.sale', ["shop" => $shop]);
+}
+
+    // public function sales($id)
+    // {
+    //     $shop = Shops::with('bunrui')->find($id);
+    //     if ($shop->bunrui) {
+    //         dd($shop->bunrui->koumoku);
+    //     } else {
+    //         dd('bunrui リレーションが見つかりませんでした');
+    //     }
+    //     return view('shops.sale', ["shop" => $shop]);
+    // }
+    
+
 }

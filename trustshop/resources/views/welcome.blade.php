@@ -28,7 +28,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン / ログアウト</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -60,9 +60,8 @@
             </div> 
             
             <div class="text-gray-600 text-sm">
-             ---会員登録いただいているお客様--- 
+             ---ほしい！が見つかるお買い物総合サイト--- 
             </div> 
-            
             <!-- <div class="flex justify-center pt-8 sm:justify-start sm:pt-0"> -->
                 <!-- <form action="index.php" method="post">
                 <h1>Login Form</h1>
@@ -88,16 +87,31 @@
                     <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="text-left">
+                                <!-- <div class="text-left">
                                     <h2 style="font-size:1rem;">当サイトに登録されているショップ一覧 ※最新の登録ショップから表示</h2>
+                                </div> -->
+                                <div class="text-right">
+                                    <a class="btn btn-success" href="{{ route('user.create') }}">■新規お客様登録はこちら■</a>
+                                <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->
                                 </div>
                                 <div class="text-right">
-                                <a class="btn btn-success" href="{{ route('shops.create') }}">新規登録</a>
+                                    <a class="btn btn-success" href="{{ route('shops.create') }}">■新規ショップ登録はこちら■</a>
                                 <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-bordered">
+                    </div>
+                    <div>
+                        <h1>Shop List</h1> 
+                            <ul> @foreach ($shops as $shop) 
+                                <li> 
+                                    <a href="{{ route('shop.sale', ['id' => $shop->id]) }}"> {{ $shop->name }} </a> 
+                                </li> @endforeach 
+                            </ul>
+                    </div>
+                    
+
+                        <!-- <table class="table table-bordered">
                             <tr>
                                 <th>ID</th>
                                 <th>No</th>
@@ -114,12 +128,12 @@
                                 <td style="text-align:right">{{ $shop->bunrui }}</td>
                                 <td style="text-align:center">
                                     <a class="btn btn-primary" href="{{ route('shops.edit','$shop->id') }}">変更</a>
-                                    <!-- このボタンを押すと'shops.edit'に飛んで$shopのidテータを渡す -->
+                                    このボタンを押すと'shops.edit'に飛んで$shopのidテータを渡す
                                 </td>
                             <tr>
                             @endforeach
                             
-                        </table>
+                        </table> -->
                     </div>
             <!-- </div> -->
             </div>

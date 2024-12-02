@@ -29,9 +29,8 @@ class Controller extends BaseController
             $join->on('shops.bunrui','=','bunruis.id');
         })
         ->orderby('shops.id','DESC')
-        ->paginate(5);
-
-
+        ->get();
+        // ->paginate(5);
         return view('welcome',['shops'=> $shops]);
 
     }
