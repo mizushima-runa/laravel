@@ -16,6 +16,12 @@
    <form class="form-signin" method="POST" action="{{ route('login') }}">
     @csrf
   <h1 class="h3 mb-3 font-weight-normal">ログインフォーム</h1>
+  
+  <div class="text-right">
+    <a class="btn btn-success" href="{{ route('user.create') }}">■新規お客様登録はこちら■</a>
+    <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->
+  </div>
+  
     @foreach ($errors->all() as $error)
       <ul class="alert alert-danger">
           <li>{{ $error }}</li>
