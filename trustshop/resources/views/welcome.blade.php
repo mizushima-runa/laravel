@@ -90,10 +90,7 @@
                                 <!-- <div class="text-left">
                                     <h2 style="font-size:1rem;">当サイトに登録されているショップ一覧 ※最新の登録ショップから表示</h2>
                                 </div> -->
-                                <div class="text-right">
-                                    <a class="btn btn-success" href="{{ route('user.create') }}">■新規お客様登録はこちら■</a>
-                                <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->
-                                </div>
+                                
                                 <div class="text-right">
                                     <a class="btn btn-success" href="{{ route('shops.create') }}">■新規ショップ登録はこちら■</a>
                                 <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->

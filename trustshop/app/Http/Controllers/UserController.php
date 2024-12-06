@@ -48,7 +48,7 @@ class UserController extends Controller
             // passwordはハッシュ化(bcrypt関数)する必要がある
             $user->save();
 
-            return redirect('/');
+            return redirect('/loginpage');
     }
 
     /**

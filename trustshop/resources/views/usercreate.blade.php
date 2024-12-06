@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ url('/') }}">戻る</a>
+            <a class="btn btn-success" href="{{ url('/loginpage') }}">戻る</a>
         </div>
 </form>
 
