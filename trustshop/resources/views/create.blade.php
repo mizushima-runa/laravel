@@ -45,7 +45,7 @@
         </div>
         <div class="col-12 mb-2 mt-2">
             <div class="form-group">
-                <select name="bunrui" class="form-select">
+                <select name="shop_bunrui" class="form-select">
                     <option>分類を選択してください</option>
                     @foreach($bunruis as $bunrui)
                         <option value="{{ $bunrui->id }}">{{ $bunrui->koumoku }}</option>

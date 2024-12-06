@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ShopsController;
 use App\Http\Controllers\Auth\AuthController;
 
 /*
@@ -108,6 +109,12 @@ Route::post('/shops/store','App\Http\Controllers\ShopsController@store')->name('
 Route::get('/shops/edit/{shop}','App\Http\Controllers\ShopsController@edit')->name('shops.edit');
 Route::put('/shops/edit/{shop}','App\Http\Controllers\ShopsController@update')->name('shops.update');
 
+/*
+|--------------------------------------------------------------------------
+| ショップ個別ページ表示
+|--------------------------------------------------------------------------
+*/
+Route::get('/shops/{id}',[ShopsController::class,'sales'])->name('shop.sale');
 
 
 ?>
