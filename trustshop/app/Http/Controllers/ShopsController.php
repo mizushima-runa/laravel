@@ -67,7 +67,7 @@ class ShopsController extends Controller
         $request->validate([
         // フォームリクエストの検証(バリデーション)を行うためのメゾット↓以下が検証ルールになる。
             // 'id' => 'required|integer|between:25,99',
-            'number' => 'required|digits:5',
+            // 'number' => 'required|digits:5',
             'name' => 'required|string|max:30',
             'shosai' => 'required|string|max:50',
             'shop_bunrui' => 'required|integer|between:1,5',
@@ -75,9 +75,11 @@ class ShopsController extends Controller
         $shop = new Shops; 
         // 新しいshopsモデルのインスタンス、DBに新しいレコードを挿入するための準備
         // この$shopがshopモデルのインスタンス、この中にデータを入れていく感じ
-        $shop->id = $request->input("id");
-        // この時の$shopの項目はDBのカラム名と対応する。input()内はフォーム作成時のnameで指定したもの
-        $shop->user_id = $request->input("number");
+         // この時の$shopの項目はDBのカラム名と対応する。input()内はフォーム作成時のnameで指定したもの
+
+        // $shop->id = $request->input("id");
+       
+        $shop->user_id = auth()->user()->id;
         $shop->name = $request->input("name");
         $shop->description = $request->input("shosai");
         $shop->shop_bunrui = $request->input("shop_bunrui");
