@@ -9,7 +9,7 @@
                 <h2 style="font-size:1rem;">当サイトに登録されているショップ一覧 ※最新の登録ショップから表示</h2>
             </div>
             <div class="text-right">
-            <a class="btn btn-success" href="{{ route('shops.create') }}">新規登録</a>
+                <a class="btn btn-success" href="{{ route('shops.create') }}">新規登録</a>
             <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->
             </div>
         </div>
@@ -47,6 +47,6 @@
         @csrf
         <button class="btn btn-danger">ホームに戻る</button>
     </form>
-
+    
     @endsection
 <!-- ＠section~＠endsection が app.blade.phpの@:yield('content')に反映される。 -->

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Shops extends Model
 {
@@ -16,6 +17,8 @@ class Shops extends Model
     public function bunrui(): BelongsTo{
         return $this->belongsTo(Bunrui::class,'shop_bunrui','id');
     }
+
+    use SoftDeletes;
     
 }
 // モデル名を指定するとララベルが自動的にmodelテーブルがあると推測し、そこからデータがする。

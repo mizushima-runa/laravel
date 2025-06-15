@@ -15,7 +15,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index(){
-
+        
         $shops = Shops::select([
             'shops.id',
             'shops.user_id',
@@ -26,7 +26,7 @@ class Controller extends BaseController
         ])
         ->from('shops')
         ->join('bunruis',function($join){
-            $join->on('shops.bunrui','=','bunruis.id');
+            $join->on('shops.shop_bunrui','=','bunruis.id');
         })
         ->orderby('shops.id','DESC')
         ->get();

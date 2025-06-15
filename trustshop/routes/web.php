@@ -1,13 +1,14 @@
 <?php
-
 // ★ルーティングするところ★
-// 修正済
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ShopsController;
+<<<<<<< HEAD
+use App\Http\Controllers\ProductsController;
+=======
+>>>>>>> master
 use App\Http\Controllers\Auth\AuthController;
 
 /*
@@ -23,6 +24,10 @@ Route::group(['middleware' =>['guest']],function(){
 
 });
 // guest:ログイン前のユーザのみこの2つにアクセスできる。
+
+// ★会員登録成功画面
+Route::get('/user/create/success',[UserController::class,'success'])->name('user.success');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +67,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/posts/{id}', [PostsController::class,'show']);
 
 
 /*
@@ -107,6 +111,7 @@ Route::post('/shops/store','App\Http\Controllers\ShopsController@store')->name('
 | 登録削除
 |--------------------------------------------------------------------------
 */
+
 Route::get('/shops/edit/{shop}','App\Http\Controllers\ShopsController@edit')->name('shops.edit');
 Route::put('/shops/edit/{shop}','App\Http\Controllers\ShopsController@update')->name('shops.update');
 
@@ -116,6 +121,71 @@ Route::put('/shops/edit/{shop}','App\Http\Controllers\ShopsController@update')->
 |--------------------------------------------------------------------------
 */
 Route::get('/shops/{id}',[ShopsController::class,'sales'])->name('shop.sale');
+
+/*
+|--------------------------------------------------------------------------
+| ショップ個別編集ページ表示
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/shops/edit/{id}',[ShopsController::class,'shopedit'])->name('shop.edit');
+Route::post('/shops/update/{id}',[ShopsController::class,'update'])->name('shop.update');
+
+/*
+|--------------------------------------------------------------------------                                                                                                                                   
+| ショップ削除
+|--------------------------------------------------------------------------
+*/
+Route::post('/shops/delete/{shopid}',[ShopsController::class,'delete'])->name('shop.delete');
+
+
+/*
+|--------------------------------------------------------------------------
+| ユーザ個別ページ表示
+|--------------------------------------------------------------------------
+*/
+Route::get('/user/{id}',[UserController::class,'parsonal'])->name('user.pasonal');
+
+
+/*
+|--------------------------------------------------------------------------
+| 商品登録(店個別)ページ表示
+|--------------------------------------------------------------------------
+*/
+Route::get('/product/{shopid}',[ProductsController::class,'create'])->name('product.create');
+Route::post('/product/store/{shopid}',[ProductsController::class,'store'])->name('product.store');
+
+/*
+|--------------------------------------------------------------------------
+| 商品編集個別ページ表示
+|--------------------------------------------------------------------------
+*/
+Route::get('/product/edit/{shopid}/{productid}',[ProductsController::class,'edit'])->name('product.edit');
+Route::post('/product/update/{shopid}/{productid}',[ProductsController::class,'update'])->name('product.update');
+
+/*
+|--------------------------------------------------------------------------
+| 商品CSV出力
+|--------------------------------------------------------------------------
+*/
+Route::get('/download-products/{shopid}',[ProductsController::class,'download'])->name('download.products');
+
+/*
+|--------------------------------------------------------------------------
+| 商品個別ページ表示
+|--------------------------------------------------------------------------
+*/
+Route::get('/pro/details/{productid}', [ProductsController::class, 'detail'])->name('product.detail');
+// 商品購入
+Route::post('/pro/purchase/{productid}', [ProductsController::class, 'purchase'])->name('product.purchase');
+
+/*
+|--------------------------------------------------------------------------                                                                                                                                   
+| 商品削除
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/pro/delete/{productid}',[ProductsController::class, 'delete'])->name('product.delete');
 
 
 ?>

@@ -3,7 +3,7 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jesdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrsp.min/css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <style type="text/css">
     body{
         font-family: "Helvetica Neue",

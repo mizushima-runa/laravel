@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="#" rel="stylesheet">
-    <style type="text/css">
-    body{
-        font-family: "Helvetica Neue",
-            Arial,
-            "Hiragino Kaku Gothic ProN",
-            "Hiragino Sans",
-            Meiryo,
-            sans=serif
-    }
-    </style>
-    <title>ユーザ登録</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <title>ユーザ登録</title>
     </head>
     <body>
         <div class="container">
@@ -63,7 +53,7 @@
         <form method="POST" action="/register">
             @csrf
             <label for="password">Password</label>
-                <input type="password" name="password" id="password" >
+                <input type="password" name="password" id="password" placeholder="任意のパスワード">
 
              <label for="password_confirmation">Confirm Password</label>
                 <input type="password" name="password_confirmation" id="password_confirmation">
@@ -74,12 +64,13 @@
 
         
         
-            <div class="col-12 mb-2 mt-2">
-                <button type="submit" class="btn btn-primary w-100">登録</button>
+            <div>
+                <button type="submit" class="btn-nomal">登録</button>
             </div>
+
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ url('/loginpage') }}">戻る</a>
+            <a class="btn btn-success" href="{{ route('showLogin') }}">▶戻る</a>
         </div>
 </form>
 
