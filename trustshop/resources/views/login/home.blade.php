@@ -21,7 +21,7 @@
             <x-alert type="success" :session="session('login_success')"/>
 
 
-            <h3>ログインしました。</h3>
+            <h3>ログイン中ユーザ情報</h3>
             <ul>
                 <il>名前：{{ Auth::user()->name }}様</il>
                 <il>メールアドレス：{{ Auth::user()->email }}</il>

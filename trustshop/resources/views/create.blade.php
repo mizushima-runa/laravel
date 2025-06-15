@@ -24,16 +24,16 @@
             </div>
             IDは入力しなくても自動的に連番になるの登録フォームは不要
         </div> -->
-        <div class="col-12 mb-2 mt-2">
+        <!-- <div class="col-12 mb-2 mt-2">
             <div class="form-group">
                 <input type="text" name="number" class="form-control" placeholder="No">
             </div> 
-        </div>
+        </div> -->
         <div class="col-12 mb-2 mt-2">
             <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="名前">
+                <input type="text" name="name" class="form-control" placeholder="ショップ名">
                 @error('name')
-                <span style="color:red;">名前を30文字以内で入力してください。</span>
+                    <span style="color:red;">※ショップ名を30文字以内で入力してください。</span>
                 @enderror
                 <!-- 名前が入力されてないときにアラート出力する -->
             </div>
@@ -41,15 +41,19 @@
         <div class="col-12 mb-2 mt-2">
             <div class="form-group">
                 <textarea name="shosai" class="form-control" style="height:100px" placeholder="ショップ詳細を入力してください。"></textarea>
+                @error('name')
+                    <span style="color:red;">※ショップ詳細を入力してください。</span>
+                @enderror
             </div>
         </div>
         <div class="col-12 mb-2 mt-2">
             <div class="form-group">
-                <select name="bunrui" class="form-select">
+                <select name="shop_bunrui" class="form-select">
                     <option>分類を選択してください</option>
                     @foreach($bunruis as $bunrui)
                         <option value="{{ $bunrui->id }}">{{ $bunrui->koumoku }}</option>
                     @endforeach
+                    
                 </select>
             </div>
         </div>
@@ -59,7 +63,13 @@
             </div>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ url('/shops') }}">戻る</a>
+            <a class="btn btn-success" href="{{ url('/shops') }}">▶ショップ一覧</a>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('user.pasonal',[Auth::user()->id] )}}">▶マイページに戻る</a>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ url('/') }}">▶ホームに戻る</a>
         </div>
 </form>
 
@@ -67,6 +77,3 @@
 
 </div>
 @endsection('contents')
-
-
-    

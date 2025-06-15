@@ -50,7 +50,7 @@ class AuthController extends Controller
                 }
                 
                 // ⓹ログイン成功
-                return redirect()->route('home')->with('login_success','ログインが成功しました。');
+                return redirect()->route('mainindex')->with('login_success','ログインが成功しました。');
             }
         }
         // $userがnullの場合↓ログイン失敗

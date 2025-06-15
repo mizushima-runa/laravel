@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Shops;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    |会員登録成功画面
+    |--------------------------------------------------------------------------
+    */  
+    public function success(){
+        return view('login.usersuccess');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +59,7 @@ class UserController extends Controller
             // passwordはハッシュ化(bcrypt関数)する必要がある
             $user->save();
 
-            return redirect('/');
+            return redirect('/user/create/success');
     }
 
     /**
@@ -95,4 +106,16 @@ class UserController extends Controller
     {
         //
     }
+
+    public function parsonal($id){
+        $user = User::findOrFail($id);
+        $shops = Shops::where('user_id', $id)->get();
+        // dd($shops);
+        $today = date('Y-m-d');
+        return view('users.parsonal',['user'=>$user,'shops'=>$shops,'today'=>$today]);
+    }
+
+    
+
+
 }

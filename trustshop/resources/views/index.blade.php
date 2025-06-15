@@ -1,14 +1,15 @@
-@extends('app');
+@extends('app')
 <!-- app.blade.phpを引き継いでいる -->
 <!-- http~/shopsを検索するとapp.blade.phpの内容に下のcontentが追加されたものが表示される。 -->
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="text-left">
+                <h1>⋆⋆⋆正常に登録されました。⋆⋆⋆</h1>
                 <h2 style="font-size:1rem;">当サイトに登録されているショップ一覧 ※最新の登録ショップから表示</h2>
             </div>
             <div class="text-right">
-            <a class="btn btn-success" href="{{ route('shops.create') }}">新規登録</a>
+                <a class="btn btn-success" href="{{ route('shops.create') }}">新規登録</a>
             <!-- 新規登録を押すとshops.create⇒ShopsControllerのcreateメゾットになる。 -->
             </div>
         </div>
@@ -41,6 +42,11 @@
 
     {!! $shops->links('pagination::bootstrap-4') !!}
     <!-- laravel8以降はbootstrap-5をサポートしている、laravel7以前はbootstrap-4を指定する -->
+    
+    <form action="{{ route('mainpage') }}" method="POST">
+        @csrf
+        <button class="btn btn-danger">ホームに戻る</button>
+    </form>
     
     @endsection
 <!-- ＠section~＠endsection が app.blade.phpの@:yield('content')に反映される。 -->
