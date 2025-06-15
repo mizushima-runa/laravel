@@ -38,7 +38,7 @@
         @endforeach
         
     </table>
-   
+    
 
     {!! $shops->links('pagination::bootstrap-4') !!}
     <!-- laravel8以降はbootstrap-5をサポートしている、laravel7以前はbootstrap-4を指定する -->

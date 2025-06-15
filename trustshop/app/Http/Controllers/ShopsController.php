@@ -45,10 +45,13 @@ class ShopsController extends Controller
         ->orderby('shops.id','DESC')
         ->paginate(5);
 
-
-        return view('index',compact('shops'))->with('i',(request()->input('page',1)-1)*5);
-        // index.blade.phpをviewとして返す。
+        return view('index',compact('shops'));
+        // ->with('i',(request()->input('page',1)-1)*5);
+        
     }
+// 
+        // index.blade.phpをviewとして返す。
+
 
     
 
@@ -199,6 +202,7 @@ return view('shops.sale',  ['shop' => $shop, 'bunrui' => $bunrui, 'products'=>$p
         //
     }
 
+<<<<<<< HEAD
 /*
 |--------------------------------------------------------------------------
 | ショップ削除メソッド
@@ -216,4 +220,26 @@ public function delete($shopid){
 
 }
 
+=======
+    // shop個々のページを作成
+    public function sales($id)
+{
+    $shop = Shops::with('bunrui')->find($id);
+    // dd($shop->bunrui); // bunrui データを確認
+    return view('shops.sale', ["shop" => $shop]);
+}
+
+    // public function sales($id)
+    // {
+    //     $shop = Shops::with('bunrui')->find($id);
+    //     if ($shop->bunrui) {
+    //         dd($shop->bunrui->koumoku);
+    //     } else {
+    //         dd('bunrui リレーションが見つかりませんでした');
+    //     }
+    //     return view('shops.sale', ["shop" => $shop]);
+    // }
+    
+
+>>>>>>> master
 }

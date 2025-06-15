@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ShopsController;
+<<<<<<< HEAD
 use App\Http\Controllers\ProductsController;
+=======
+>>>>>>> master
 use App\Http\Controllers\Auth\AuthController;
 
 /*
